@@ -1,5 +1,6 @@
 # PetConnect: A Cutting-edge Platform for Pet Adoption and Care
-
+![image for home page](images_for_md/home.png)
+![image for chatbot](images_for_md/chat.png)
 - Crafted "PetConnect," an advanced web application designed to streamline pet adoption, featuring live updates from shelters delivered through a Django-powered backend and seamless AJAX-driven user interactions for an uninterrupted browsing experience.
 - Incorporated OpenAI's API to enhance user communication with intelligent messaging features, enabling natural language interactions and improved user assistance.
 - Integrated diverse shelter APIs, presenting live adoption listings and leveraging the Google Maps API or Leaflet.js for an interactive map detailing shelter locations, thereby boosting user engagement with current, actionable information.
