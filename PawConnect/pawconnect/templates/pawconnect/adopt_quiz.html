@@ -1,0 +1,131 @@
+{% extends "pawconnect/base.html" %}
+{% load static %}
+{% block info %}
+<div class="navigation">
+	<a href="{% url 'my_profile' %}" id="id_nav_profile">{{user.first_name}} {{user.last_name}}</a>
+</div>
+<div class="navigation">
+	<a href="{% url 'home' %}" id="id_nav_home_page">Home</a>
+	<a href="{% url 'global_stream' %}" id="id_nav_global_stream">Global</a>
+	<a href="{% url 'follower_stream' %}" id="id_nav_follower_stream">Follower</a>
+	<a href="{% url 'my_chats' %}" id="id_nav_my_chats">My Chats</a>
+	<a href="{% url 'login' %}" id="id_nav_logout">Logout</a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="quiz-form">
+	<head>
+	    <meta charset="UTF-8">
+	    {% load static %}
+	    <link href="{% static 'pawconnect/quiz.css' %}" rel="stylesheet" type="text/css">
+	</head>
+	<form action="{% url 'adopt_quiz_submit' %}" method="post">
+		{% csrf_token %}
+
+		<!-- Question 1: Living Situation -->
+		<div class="question">
+			<label for="species">1. What pet species do you prefer?</label>
+			<select id="species" name="species">
+				<option value="Dog">Dog</option>
+				<option value="Cat">Cat</option>
+				<option value="Bird">Bird</option>
+				<option value="Rabbit">Rabbit</option>
+				<option value="Other">Other</option>
+			</select>
+		</div>
+
+		<!-- Question 2: Living Situation -->
+		<div class="question">
+			<label for="living_situation">2. What is your living situation?</label>
+			<select id="living_situation" name="living_situation">
+				<option value="House with yard">House with a yard</option>
+				<option value="House without yard">House without a yard</option>
+				<option value="Apartment">Apartment/Flat</option>
+				<option value="Other">Other</option>
+			</select>
+		</div>
+
+		<!-- Question 3: Hours Away -->
+		<div class="question">
+			<label for="hours_away">3. How many hours are you away from home on a typical day?</label>
+			<select id="hours_away" name="hours_away">
+				<option value="Less than 4 hours">Less than 4 hours</option>
+				<option value="4 to 8 hours">4 to 8 hours</option>
+				<option value="More than 8 hours">More than 8 hours</option>
+			</select>
+		</div>
+
+		<!-- Question 4: Pet Size -->
+		<div class="question">
+			<label for="pet_size">4. What size of pet are you considering?</label>
+			<select id="pet_size" name="pet_size">
+				<option value="Small">Small</option>
+				<option value="Medium">Medium</option>
+				<option value="Large">Large</option>
+				<option value="No preference">No preference</option>
+			</select>
+		</div>
+
+		<!-- Question 5: Experience with Pets -->
+		<div class="question">
+			<label>5. Do you have previous experience with pets?</label>
+			<div>
+				<input type="radio" id="experience_yes" name="experience" value="Yes">
+				<label for="experience_yes">Yes, I have/had one recently.</label>
+			</div>
+
+			<div>
+				<input type="radio" id="experience_some" name="experience" value="Some">
+				<label for="experience_some">Yes, but it's been a while.</label>
+			</div>
+
+			<div>
+				<input type="radio" id="experience_no" name="experience" value="No">
+				<label for="experience_no">No, this would be my first pet.</label>
+			</div>
+		</div>
+
+		<!-- Question 6: Energy level -->
+		<div class="question">
+			<label>6. What energy level are you looking for in a pet?</label>
+			<select name="energy_level">
+				<option value="High energy">High energy</option>
+				<option value="Moderate energy">Moderate energy</option>
+				<option value="Low energy">Low energy</option>
+			</select>
+		</div>
+
+		<!-- Question 7: Specific Training -->
+		<div class="question">
+			<label>7. Are you looking for a pet with specific training (housebroken, obedience trained, etc.)?</label>
+			<select name="specific_training">
+				<option value="Yes">Yes</option>
+				<option value="No">No</option>
+				<option value="Not sure">Not sure</option>
+			</select>
+		</div>
+
+		<!-- Question 8: Medical Expenses -->
+		<div class="question">
+			<label>8. How do you plan to handle medical expenses for your pet?</label>
+			<select name="medical_expenses">
+				<option value="Pet insurance">Pet insurance</option>
+				<option value="Out-of-pocket">Out-of-pocket</option>
+				<option value="Unsure at the moment">Unsure at the moment</option>
+			</select>
+		</div>
+
+		<!-- Question 9: Reason for Adoption -->
+		<div class="question">
+			<label for="adoption_reason">9. Why do you want to adopt a pet? (Open-ended question)</label>
+			<textarea id="adoption_reason" name="adoption_reason" rows="4" cols="50"></textarea>
+		</div>
+
+		<!-- Submit Button -->
+		<div class="submit-button">
+			<button type="submit">Submit</button>
+		</div>
+	</form>
+</div>
+{% endblock %}

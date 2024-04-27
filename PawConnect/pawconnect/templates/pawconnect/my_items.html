@@ -1,0 +1,48 @@
+{% extends "pawconnect/base.html" %}
+{% load static %}
+{% block content %}
+<head>
+	<meta charset="UTF-8">
+	{% load static %}
+	<h2>My Listings</h2>
+	<link href="{% static 'pawconnect/marketplace.css' %}" rel="stylesheet" type="text/css">
+</head>
+<div class="listings">
+	{% for item in items %}
+	<div class="listing">
+		<div class="listing-details">
+			<h3>{{ item.title }}</h3>
+			{% if item.image %}
+			<img src="{% url 'item_photo' item.id %}" alt="{{ item.title }}"
+				style="max-width: 300px; max-height: 300px;">
+			{% else %}
+			<img src="{% static 'pawconnect/default-item-image.jpeg' %}" alt="Default item picture"
+				style="max-width: 150px; max-height: 150px;">
+			{% endif %}
+			<p>{{ item.description }}</p>
+			<p>Price: ${{ item.price }}</p>
+			<p>Quantity Available: {{ item.quantity }}</p>
+			<p>Shelf time: {{ item.created_at|date:"F d, Y, P" }}</p>
+			{% if item.is_sold %}
+			<p class="unavailable"><strong>This item has been sold.</strong></p>
+			{% else %}
+			<p class="available"><strong>Available for purchase</strong></p>
+			{% endif %}
+			<div class="button-container">
+				<a href="{% url 'edit_item' item.id %}" class="btn btn-action btn-edit">Edit</a>
+				<form action="{% url 'delete_item' item.id %}" method="post" class="form-inline">
+					{% csrf_token %}
+					<button type="submit" class="btn btn-action btn-delete"
+						onclick="return confirm('Are you sure you want to delete this item?');">
+						Delete
+					</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	{% empty %}
+	<p>You have no listings.</p>
+	{% endfor %}
+</div>
+<a href="{% url 'marketplace' %}" class="btn-custom">Return to Marketplace</a>
+{% endblock %}

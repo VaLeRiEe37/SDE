@@ -1,0 +1,66 @@
+{% extends "pawconnect/base.html" %}
+{% load static %}
+{% block info %}
+<div class="navigation">
+	<a href="{% url 'my_profile' %}" id="id_nav_profile">{{user.first_name}} {{user.last_name}}</a>
+</div>
+<div class="navigation">
+	<a href="{% url 'home' %}" id="id_nav_home_page">Home</a>
+	<a href="{% url 'global_stream' %}" id="id_nav_global_stream">Community</a>
+	<a href="{% url 'follower_stream' %}" id="id_nav_follower_stream">Follower</a>
+	<a href="{% url 'my_chats' %}" id="id_nav_my_chats">My Chats</a>
+	<a href="{% url 'marketplace' %}" id="id_nav_my_shopping">My Shopping</a>
+	<a href="{% url 'login' %}" id="id_nav_logout">Logout</a>
+</div>
+{% endblock %}
+
+{% block content %}
+<h2 id="id_page_name">Profile Page for {{profile.user.first_name}} {{profile.user.last_name}}</h2>
+
+<div id="profile-content">
+	<!-- Show user picture and bio -->
+	{% if not profile.picture %}
+	<img src="{% static 'pawconnect/default-user-image.jpeg' %}" id="id_user_picture" alt="Profile picture">
+	{% else %}
+	<img src="{% url 'photo' profile.user.id %}" id="id_user_picture" alt="Profile picture">
+	{% endif %}
+
+	<div id="id_user_bio">{{profile.bio}}</div>
+	</br>
+
+	<!-- Display posts -->
+    <div id="user-posts">
+        <h3>Posts by {{ profile.user.first_name }}</h3>
+        {% for post in posts %}
+        <div class="post">
+            <p>{{ post.text }}</p>
+            <p><small>Posted on {{ post.creation_time }}</small></p>
+        </div>
+        {% empty %}
+        <p>No posts available.</p>
+        {% endfor %}
+    </div>
+
+	<!-- follow/unfollow -->
+	{% if profile.user in request.user.profile.following.all %}
+	<form action="{% url 'unfollow' profile.user.id %}" method="post">
+		<button id="id_unfollow" type="submit">Unfollow</button>
+		{% csrf_token %}
+	</form>
+	{% else %}
+	<form action="{% url 'follow' profile.user.id %}" method="post">
+		<button id="id_follow" type="submit">Follow</button>
+		{% csrf_token %}
+	</form>
+	{% endif %}
+
+	<!-- Show start chat button for other users' profiles -->
+	{% if request.user != profile_user %}
+	<div>
+		<a href="{% url 'initiate_chat_session' profile.user.id %}" class="btn-start-chat">✉️ Chat with {{ profile.user.first_name }} ✉️</a>
+	</div>
+	{% endif %}
+	</br></br>
+</div>
+
+{% endblock %}

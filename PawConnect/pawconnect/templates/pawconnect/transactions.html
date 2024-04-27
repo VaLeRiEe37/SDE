@@ -1,0 +1,32 @@
+<!-- transactions.html -->
+{% extends "pawconnect/base.html" %}
+{% load static %}
+{% block content %}
+<h2>My Transactions</h2>
+
+<h3>As Buyer</h3>
+{% if transactions_as_buyer %}
+    <ul>
+        {% for transaction in transactions_as_buyer %}
+        <li>
+            Bought {{ transaction.item.title }} from {{ transaction.seller.username }} for ${{ transaction.amount }} on {{ transaction.timestamp }}
+        </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No transactions as buyer.</p>
+{% endif %}
+
+<h3>As Seller</h3>
+{% if transactions_as_seller %}
+    <ul>
+        {% for transaction in transactions_as_seller %}
+        <li>
+            Sold {{ transaction.item.title }} to {{ transaction.buyer.username }} for ${{ transaction.amount }} on {{ transaction.timestamp }}
+        </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No transactions as seller.</p>
+{% endif %}
+{% endblock %}

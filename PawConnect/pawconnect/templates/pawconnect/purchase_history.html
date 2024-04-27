@@ -1,0 +1,36 @@
+{% extends "pawconnect/base.html" %}
+{% load static %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>My Purchase History</title>
+    <link href="{% static 'pawconnect/marketplace.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <h2>My Purchase History</h2>
+
+    {% for order in orders %}
+        <div class="order-container">
+            <p>Order Date: {{ order.created_at|date:"F d, Y H:i" }}</p>
+            <ul>
+                {% for item in order.items.all %}
+                    <li>
+                        {{ item.quantity }} of {{ item.product.title }}
+                        <ul>
+                            <li>Unit Price: {{ item.price }} 🪙</li>
+                            <li>Quantity: {{ item.quantity }}</li>
+                            <li>Subtotal: {{ item.get_cost }} 🪙</li>
+                        </ul>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% empty %}
+        <p>You have no purchase history.</p>
+    {% endfor %}
+
+    <a href="{% url 'marketplace' %}" class="btn-custom">Return to Marketplace</a>
+</body>
+{% endblock %}

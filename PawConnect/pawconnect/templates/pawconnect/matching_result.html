@@ -1,0 +1,98 @@
+{% extends "pawconnect/base.html" %}
+{% load static %}
+{% block info %}
+<div class="navigation">
+	<a href="{% url 'my_profile' %}" id="id_nav_profile">{{user.first_name}} {{user.last_name}}</a>
+</div>
+<div class="navigation">
+	<a href="{% url 'home' %}" id="id_nav_home_page">Home</a>
+	<a href="{% url 'global_stream' %}" id="id_nav_global_stream">Global</a>
+	<a href="{% url 'follower_stream' %}" id="id_nav_follower_stream">Follower</a>
+	<a href="{% url 'my_chats' %}" id="id_nav_my_chats">My Chats</a>
+	<a href="{% url 'marketplace' %}" id="id_nav_my_shopping">My shopping</a>
+	<a href="{% url 'login' %}" id="id_nav_logout">Logout</a>
+</div>
+{% endblock %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link href="{% static 'pawconnect/quiz.css' %}" rel="stylesheet" type="text/css">
+</head>
+{% if quiz_type == 'rehome' %}
+<h2>Matching Adopters for Your Pet</h2>
+<div class="quiz-results">
+	<h3>Your Pet's Details:</h3>
+	<p>Species: {{ rehome_result.species }}</p>
+	<p>Color: {{ rehome_result.color }}</p>
+	<p>Age: {{ rehome_result.age }}</p>
+	<p>Size: {{ rehome_result.size }}</p>
+	<p>Gender: {{ rehome_result.gender }}</p>
+	<p>Neutered/Spayed: {{ rehome_result.neutered_spayed|yesno:"Yes,No" }}</p>
+	<p>Health Issues: {{ rehome_result.health_issues }}</p>
+	<p>Friendly with Other Pets: {{ rehome_result.friendly_with_pets|yesno:"Yes,No" }}</p>
+	<p>Vaccinations Up to Date: {{ rehome_result.vaccinations_up_to_date|yesno:"Yes,No" }}</p>
+	<p>Rehoming Reason: {{ rehome_result.rehoming_reason }}</p>
+</div>
+<div class="matching-results">
+	{% for match in matches %}
+	<div class="match-details">
+		<h3>Adopter Details:</h3>
+		<p><strong>Username:</strong> <a href="{% url 'other_user' match.user.id %}">{{ match.user.username }}</a></p>
+		<p><strong>Email:</strong> {{ match.user.email }}</p>
+		<p><strong>Living Situation:</strong> {{ match.living_situation }}</p>
+		<p><strong>Typical Hours Away from Home:</strong> {{ match.hours_away }}</p>
+		<p><strong>Preferred Pet Size:</strong> {{ match.pet_size_preference }}</p>
+		<p><strong>Previous Pet Experience:</strong> {{ match.pet_experience }}</p>
+		<p><strong>Preferred Pet Energy Level:</strong> {{ match.pet_energy_level }}</p>
+		<p><strong>Interest in Specific Training:</strong> {{ match.specific_training }}</p>
+		<p><strong>Plan for Handling Medical Expenses:</strong> {{ match.medical_expenses_plan }}</p>
+		<p><strong>Reason for Adoption:</strong> {{ match.adoption_reason }}</p>
+	</div>
+	{% endfor %}
+</div>
+
+{% elif quiz_type == 'adopt' %}
+<h2>Matching Pets for Adoption</h2>
+<div class="quiz-results">
+	<h3>Your Adoption Preferences:</h3>
+	<p>Preferred Species: {{ adopt_result.species }}</p>
+	<p>Living Situation: {{ adopt_result.living_situation }}</p>
+	<p>Typical Hours Away from Home: {{ adopt_result.hours_away }}</p>
+	<p>Preferred Pet Size: {{ adopt_result.pet_size }}</p>
+	<p>Previous Pet Experience: {{ adopt_result.pet_experience }}</p>
+	<p>Preferred Pet Energy Level: {{ adopt_result.pet_energy_level }}</p>
+	<p>Interest in Specific Training: {{ adopt_result.specific_training }}</p>
+	<p>Plan for Handling Medical Expenses: {{ adopt_result.medical_expenses_plan }}</p>
+	<p>Reason for Adoption: {{ adopt_result.adoption_reason }}</p>
+	<p>Household Composition: {{ adopt_result.household_composition }}</p>
+	<p>Has Other Pets: {{ adopt_result.has_other_pets|yesno:"Yes,No" }}</p>
+	<p>Looking for a Pet that is: {{ adopt_result.pet_characteristics }}</p>
+</div>
+<div class="matching-results">
+	{% for match in matches %}
+	<div class="match-details">
+		<h3>Rehomer and Pet Details:</h3>
+
+		<p><strong>Rehomer:</strong> <a href="{% url 'other_user' match.user.id %}"> {{ match.user.username }}</a></p>
+		<p><strong>Pet Species:</strong> {{ match.species }}</p>
+		<p><strong>Pet Size:</strong> {{ match.pet_size }}</p>
+		<p><strong>Pet Color:</strong> {{ match.color }}</p>
+		<p><strong>Pet Age:</strong> {{ match.age }}</p>
+		<p><strong>Pet Gender:</strong> {{ match.gender }}</p>
+		<p><strong>Neutered/Spayed:</strong> {{ match.neutered_spayed|yesno:"Yes,No" }}</p>
+		<p><strong>Health Issues:</strong> {{ match.health_issues }}</p>
+		<p><strong>Friendly with Other Pets:</strong> {{ match.friendly_with_pets|yesno:"Yes,No" }}</p>
+		<p><strong>Vaccinations Up to Date:</strong> {{ match.vaccinations_up_to_date|yesno:"Yes,No" }}</p>
+		<p><strong>Rehoming Reason:</strong> {{ match.rehoming_reason }}</p>
+	</div>
+	{% endfor %}
+</div>
+{% endif %}
+
+{% if not matches %}
+<p>No matches found.</p>
+{% endif %}
+
+{% endblock %}

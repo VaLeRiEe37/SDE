@@ -1,0 +1,38 @@
+{% extends "pawconnect/base.html" %}
+{% load static %}
+{% block extra_css %}
+<link href="{% static 'pawconnect/private_chat.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block info %}
+<div class="navigation">
+	<a href="{% url 'my_profile' %}" id="id_nav_profile">{{user.first_name}} {{user.last_name}}</a>
+</div>
+<div class="navigation">
+	<a href="{% url 'home' %}" id="id_nav_home_page">Home</a>
+	<a href="{% url 'global_stream' %}" id="id_nav_global_stream">Global</a>
+	<a href="{% url 'follower_stream' %}" id="id_nav_follower_stream">Follower</a>
+	<a href="{% url 'marketplace' %}" id="id_nav_my_shopping">My shopping</a>
+	<a href="{% url 'login' %}" id="id_nav_logout">Logout</a>
+</div>
+{% endblock %}
+
+{% block content %}
+<h2>My Chats</h2>
+<div class="my-chat-list">
+	{% for session_info in chat_sessions %}
+	<div class="my-chats-chat-session">
+		<a href="{% url 'chat_with_user' session_info.session_id %}">
+			Chat with {{ session_info.other_user_full_name }}
+			{% if session_info.unread_count %}
+			<span class="unread-messages">Unread Messages: {{ session_info.unread_count }}</span>
+			{% endif %}
+		</a>
+	</div>
+	{% empty %}
+	<p>No active chats.</p>
+	{% endfor %}
+</div>
+
+<script src="{% static 'pawconnect/private_message.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,188 @@
+/**************************/
+/*below is for the quiz view*/
+/**************************/
+/*.pet-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    margin-top: 20px;
+}
+
+.quiz-buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.quiz-buttons, .results-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.pet-options form, .results-option a {
+    display: flex;
+    margin: 0 10px;
+}
+
+.button-style {
+    padding: 10px 20px; 
+    font-size: 18px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    color: white;
+    background-color: mediumpurple;
+    text-decoration: none;
+    width: 250px;
+    height: 50px;
+    text-align: center;
+    align-items: center;
+    margin-top: 20px;
+    display: inline-flex;
+    justify-content: center;
+}
+
+.button-style:hover {
+    background-color: #0056b3;
+}*/
+.pet-options {
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+}
+
+.quiz-buttons form {
+    margin-bottom: 15px;
+}
+
+.button-style {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: mediumpurple;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 20px;
+}
+
+.button-style:hover {
+    background-color: #0056b3;
+}
+
+.info-message {
+    background-color: #f7f7f7;
+    border-left: 3px solid #6f42c1;
+    padding: 15px;
+    margin: 20px 0;
+    font-style: italic;
+}
+
+.results-option p {
+    color: #dc3545;
+    padding: 10px;
+    border: 1px solid #dc3545;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+/**************************/
+/*below is for the rehome/adopt quiz view*/
+/**************************/
+.quiz-form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+}
+
+.quiz-form h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* Style for all labels */
+.quiz-form label {
+    display: block; 
+    align-items: center;
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-size: 20px;
+    color: #444;
+}
+
+.quiz-form input[type="radio"],
+.quiz-form label {
+    display: inline-block; /* Puts inputs and labels on the same line */
+    margin-right: 5px; /* Space between radio button and label */
+}
+
+/* Style for all input fields and textareas */
+.quiz-form input[type="text"],
+.quiz-form input[type="number"],
+.quiz-form select,
+.quiz-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* Ensures padding does not affect the total width */
+    font-size: 18px;
+}
+
+.quiz-form input[type="radio"],
+.quiz-form input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.quiz-form button[type="submit"] {
+    background-color: mediumpurple;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.quiz-form button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.error-message {
+    color: red;
+    margin-bottom: 20px;
+}
+
+/**************************/
+/*below is for the matching result view*/
+/**************************/
+.match-details {
+    border: 1px solid #ccc; /* Light grey border */
+    padding: 15px;
+    margin-bottom: 20px; /* Space between each match */
+    border-radius: 5px; /* Slightly rounded corners for a softer look */
+    background-color: #f9f9f9; /* Light background color */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+}
+
+.match-details h3, .match-details h4 {
+    color: #333; /* Darker text for headings for better readability */
+}
+
+.match-details p {
+    margin: 5px 0; /* Vertical spacing between paragraphs */
+    color: #666; /* Lighter text for less visual weight */
+}

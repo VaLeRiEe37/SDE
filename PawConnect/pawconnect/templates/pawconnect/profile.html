@@ -1,0 +1,51 @@
+{% extends "pawconnect/base.html" %}
+{% load static %}
+
+{% block info %}
+<div class="navigation">
+	<a href="{% url 'my_profile' %}" id="id_nav_profile">{{user.first_name}} {{user.last_name}}</a>
+</div>
+<div class="navigation">
+	<a href="{% url 'home' %}" id="id_nav_home_page">Home Page</a>
+	<a href="{% url 'global_stream' %}" id="id_nav_global_stream">Global</a>
+	<a href="{% url 'follower_stream' %}" id="id_nav_follower_stream">Follower</a>
+	<a href="{% url 'my_chats' %}" id="id_nav_my_chats">My Chats</a>
+	<a href="{% url 'login' %}" id="id_nav_logout">Logout</a>
+</div>
+{% endblock %}
+
+{% block content %}
+<main class="profile-content">
+    <h2 class="page-title">Profile for {{user.first_name}} {{user.last_name}}</h2>
+    <div class="profile-container">
+        <div class="profile-picture">
+            {% if not request.user.profile.picture %}
+            <img src="{% static 'pawconnect/default-user-image.jpeg' %}" alt="Profile picture" id="id_user_picture">
+            {% else %}
+            <img src="{% url 'photo' request.user.id %}" alt="Profile picture" id="id_user_picture">
+            {% endif %}
+        </div>
+        <div class="profile-form">
+            <form action="{% url 'my_profile' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="id_bio">Bio</label>
+                <textarea name="bio" id="id_bio" rows="4" placeholder="Enter your bio">{{ user.profile.bio }}</textarea>
+				<label for="id_city">City</label>
+				<input type="text" name="city" id="id_city" value="{{ user.profile.city }}">
+                <label for="id_picture">Profile Picture</label>
+                <input type="file" name="picture" id="id_picture">
+                <button type="submit" class="btn" id="id_update_profile_button">Update Profile</button>
+            </form>
+        </div>
+        <div class="following-list">
+            <h3>Following</h3>
+            <ul>
+                {% for u in request.user.profile.following.all %}
+                <li><a href="{% url 'other_user' u.id %}">{{ u.first_name }} {{ u.last_name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</main>
+</br></br></br>
+{% endblock %}

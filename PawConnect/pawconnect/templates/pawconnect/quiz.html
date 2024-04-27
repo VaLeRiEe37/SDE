@@ -1,0 +1,47 @@
+{% extends "pawconnect/base.html" %}
+{% load static %}
+
+{% block info %}
+<div class="navigation">
+	<a href="{% url 'my_profile' %}" id="id_nav_profile">{{user.first_name}} {{user.last_name}}</a>
+</div>
+<div class="navigation">
+	<a href="{% url 'home' %}" id="id_nav_home_page">Home</a>
+	<a href="{% url 'global_stream' %}" id="id_nav_global_stream">Global</a>
+	<a href="{% url 'follower_stream' %}" id="id_nav_follower_stream">Follower</a>
+	<a href="{% url 'my_chats' %}" id="id_nav_my_chats">My Chats</a>
+	<a href="{% url 'marketplace' %}" id="id_nav_my_shopping">My shopping</a>
+	<a href="{% url 'login' %}" id="id_nav_logout">Logout</a>
+</div>
+{% endblock %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link href="{% static 'pawconnect/quiz.css' %}" rel="stylesheet" type="text/css">
+</head>
+<h2 id="id_page_name">Take the Quiz and Find Your Pet</h2>
+<div class="pet-options">
+	<div class="quiz-buttons">
+		<form action="{% url 'rehome_quiz' %}" method="get">
+			<button type="submit" id="id_btn_rehome_quiz" class="button-style">I want to rehome my pet.</button>
+		</form>
+		<form action="{% url 'adopt_quiz' %}" method="get">
+			<button type="submit" id="id_btn_adopt_quiz" class="button-style">I want to adopt a pet.</button>
+		</form>
+	</div>
+
+	{% if user_has_submitted_quiz %}
+	<div class="results-option">
+		{% if matches_exist %}
+		<a href="{% url 'matching_result' %}" id="id_btn_matching_result">View Matching Results</a>
+		{% else %}
+		<p>No matches found. Please check back later as more pets are added.</p>
+		{% endif %}
+	</div>
+	{% else %}
+	<p class="info-message">Take a quiz first to match with pets or adopters.</p>
+	{% endif %}
+</div>
+{% endblock %}

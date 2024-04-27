@@ -1,0 +1,167 @@
+/**************************/
+/*below is for the my_chats */
+/**************************/
+.my-chat-list {
+    margin: 0 auto; /* Centering the chat list */
+    max-width: 800px; 
+    background: #f9f9f9; /* Light background for the chat list */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+.my-chats-chat-session {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space out elements */
+    padding: 15px;
+    border-bottom: 1px solid #e1e1e1; /* Separator between chat sessions */
+}
+
+.my-chats-chat-session a {
+    text-decoration: none;
+    color: #333; /* Dark text for better readability */
+    font-weight: bold;
+    flex-grow: 1; /* Ensure link takes up space for clickability */
+}
+
+.my-chats-chat-session a:hover {
+    color: #0056b3; 
+}
+
+.my-chats-chat-session .unread-messages {
+    background-color: #d9534f; /* Bootstrap 'danger' color */
+    color: white;
+    padding: 6px 12px;
+    border-radius: 15px; /* Pill-shaped badge for unread messages */
+    font-size: 0.875em;
+    margin-left: 4px;
+}
+
+/**************************/
+/*below is for the chat_with_user interface*/
+/**************************/
+.pawconnect-chat {
+    width: 1200px; /* Fixed width of 1000px */
+    height: 450px; /* Fixed height of 600px */
+    border: 1px solid #ccc; /* Just to show the boundary of the chat session - can be removed or styled */
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    margin: 0 auto; /* Center the chat session */
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.pawconnect-chat h2 {
+    padding: 10px; /* Padding around the chat header */
+    background-color: rebeccapurple; /* Background color for the chat header */
+    margin: 0; /* Remove default margins */
+    text-align: center; /* Center the title text */
+    color: white;
+    margin-bottom: 10px;
+}
+
+.pawconnect-chat .chat-messages {
+    flex-grow: 1;
+    overflow-y: auto; /* Make it scrollable */
+    display: flex;
+    flex-direction: column-reverse; /* Newest messages at the bottom */
+    max-height: 70vh; /* Set maximum height for chat messages area */
+    margin-bottom: 10px; /* Space before the message input area */
+}
+
+.pawconnect-chat .message-row {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    justify-content: flex-start;
+}
+
+.pawconnect-chat .message-sent {
+    align-self: flex-end; /* Align sent messages to the right */
+    background-color: mediumpurple;
+    color: white;
+    margin-right: 10px;
+}
+
+.pawconnect-chat .message-received {
+    align-self: flex-start; /* Align received messages to the left */
+    background-color: #e5e5ea;
+    color: black;
+    flex-direction: row;
+    margin-left: 10px;
+}
+
+.pawconnect-chat .message-bubble {
+    max-width: 75%;
+    padding: 10px;
+    border-radius: 20px;
+    word-wrap: break-word;
+}
+
+.pawconnect-chat .message-sent .message-bubble {
+    background-color: mediumpurple;
+    color: white;
+/*    margin-left: 10px;*/
+}
+
+.pawconnect-chat .message-received .message-bubble {
+    background-color: #e5e5ea;
+    color: black;
+    margin-right: 10px;
+}
+
+.pawconnect-chat .timestamp {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.6);
+    white-space: nowrap;
+}
+
+.pawconnect-chat .message-sent .timestamp {
+    align-self: flex-end; 
+    order: 1;
+    margin-left: 10px;
+    margin-right: 5px; /* Space after the timestamp */
+    color: white;
+}
+
+/* Ensure the timestamp for received messages stays to the left */
+.pawconnect-chat .message-received .timestamp {
+    align-self: flex-end; 
+    order: 2;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+.pawconnect-chat .no-messages {
+    text-align: center;
+    padding: 20px;
+}
+
+.pawconnect-chat .message-input-container {
+    padding: 10px;
+    background-color: #f2f2f2;
+    display: flex;
+}
+
+.pawconnect-chat #chat-message-input {
+    flex-grow: 1;
+    margin-right: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 18px;
+    font-size: 16px;
+}
+
+.pawconnect-chat #send-message-button {
+    padding: 5px 10px;
+    background-color: mediumpurple;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}

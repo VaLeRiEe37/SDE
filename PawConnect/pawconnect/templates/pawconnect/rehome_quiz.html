@@ -1,0 +1,137 @@
+{% extends "pawconnect/base.html" %}
+{% load static %}
+{% block info %}
+<div class="navigation">
+	<a href="{% url 'my_profile' %}" id="id_nav_profile">{{user.first_name}} {{user.last_name}}</a>
+</div>
+<div class="navigation">
+	<a href="{% url 'home' %}" id="id_nav_home_page">Home</a>
+	<a href="{% url 'global_stream' %}" id="id_nav_global_stream">Global</a>
+	<a href="{% url 'follower_stream' %}" id="id_nav_follower_stream">Follower</a>
+	<a href="{% url 'my_chats' %}" id="id_nav_my_chats">My Chats</a>
+	<a href="{% url 'login' %}" id="id_nav_logout">Logout</a>
+</div>
+{% endblock %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link href="{% static 'pawconnect/quiz.css' %}" rel="stylesheet" type="text/css">
+</head>
+<div class="quiz-form">
+	<form action="{% url 'rehome_quiz_submit' %}" method="post">
+		{% csrf_token %}
+		
+		<!-- Question 1: Species -->
+		<div class="question">
+			<label for="species">1. What is the species of your pet?</label>
+			<select id="species" name="species">
+				<option value="Dog">Dog</option>
+				<option value="Cat">Cat</option>
+				<option value="Bird">Bird</option>
+				<option value="Rabbit">Rabbit</option>
+				<option value="Other">Other</option>
+			</select>
+		</div>
+
+		<!-- Question 2: Color -->
+		<div class="question">
+			<label for="color">2. What is the color of your pet?</label>
+			<input type="text" id="color" name="color">
+		</div>
+
+		<!-- Question 3: Age -->
+		<div class="question">
+			<label for="age">3. What is the age of your pet (in years)?</label>
+			<input type="number" id="age" name="age">
+		</div>
+
+		<!-- Question 4: Size -->
+		<div class="question">
+			<label for="size">4. What is the size of your pet?</label>
+			<div>
+				<input type="radio" id="small" name="size" value="Small">
+				<label for="small">Small</label>
+			</div>
+			<div>
+				<input type="radio" id="medium" name="size" value="Medium">
+				<label for="medium">Medium</label>
+			</div>
+			<div>
+				<input type="radio" id="large name=" size" value="Large">
+				<label for="large">Large</label>
+			</div>
+		</div>
+
+		<!-- Question 5: Gender -->
+		<div class="question">
+			<label for="gender">5. What is the gender of your pet?</label>
+			<div>
+				<input type="radio" id="male" name="gender" value="Male">
+				<label for="male">Male</label>
+			</div>
+			<div>
+				<input type="radio" id="female" name="gender" value="Female">
+				<label for="female">Female</label>
+			</div>
+		</div>
+
+		<!-- Question 6: Neutered or Spayed -->
+		<div class="question">
+			<label for="neutered">6. Is your pet neutered or spayed?</label>
+			<div>
+				<input type="radio" id="yes_neutered" name="neutered" value="Yes">
+				<label for="yes_neutered">Yes</label>
+			</div>
+			<div>
+				<input type="radio" id="no_neutered" name="neutered" value="No">
+				<label for="no_neutered">No</label>
+			</div>
+		</div>
+
+		<!-- Question 7: Health Issues -->
+		<div class="question">
+			<label for="health_issues">7. Does your pet have any health issues?</label>
+			<textarea id="health_issues" name="health_issues"></textarea>
+		</div>
+
+		<!-- Question 8: Friendly with other pets -->
+		<div class="question">
+			<label for="friendly">8. Is your pet friendly with other pets?</label>
+			<div>
+				<input type="radio" id="friendly_yes" name="friendly" value="Yes">
+				<label for="friendly_yes">Yes</label>
+			</div>
+			<div>
+				<input type="radio" id="friendly_no" name="friendly" value="No">
+				<label for="friendly_no">No</label>
+			</div>
+		</div>
+
+		<!-- Question 9: Vaccination up to date -->
+		<div class="question">
+			<label for="vaccinations">9. Are your pet's vaccinations up to date?</label>
+			<div>
+				<input type="radio" id="vaccine_yes" name="vaccine" value="Yes">
+				<label for="vaccine_yes">Yes</label>
+			</div>
+			<div>
+				<input type="radio" id="vaccine_no" name="vaccine" value="No">
+				<label for="vaccine_no">No</label>
+			</div>
+		</div>
+
+		<!-- Question 10: Reason for rehoming -->
+		<div class="question">
+			<label for="reason">10. What is the reason for rehoming your pet?</label>
+			<textarea id="reason" name="reason"></textarea>
+		</div>
+
+		<!-- Submit Button -->
+		<div class="submit-button">
+			<button type="submit">Submit</button>
+		</div>
+	</form>
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "pawconnect/base.html" %}
+{% load static %}
+
+{% block info %}
+    <div class="navigation">
+        <a id = "id_login_link"  href="{% url 'login' %}" class="nav-links">Login</a>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <h2 id="id_page_name">Join the PawConnect Community</h2></br></br>
+
+    <div class="form-container">
+
+        <div class="left-image">
+            <img src="{% static 'pawconnect/register_image.png' %}">
+        </div>
+
+        <form method="post" action="{% url 'register' %}">
+            <table>
+                {% for field in form.visible_fields %}
+                    <tr>
+                        <td>{{field.label_tag}}</td>
+                        <td>{{field}}</td>
+                        <td class="errorlist">
+                            {% for error in field.errors %} {{error}} {% endfor %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+            {% csrf_token %}
+            <button id="id_register_button" type="submit">Register</button>
+            </br></br>
+        </form>
+    
+        {% for error in form.non_field_errors %}
+            <p class="errorlist">
+                {{ error }}
+            </p>
+        {% endfor %}
+    </div>
+    
+{% endblock %}
+
+{% block chatbot %}
+    <!-- Intentionally left blank to hide chatbot on this page -->
+{% endblock chatbot %}

@@ -1,0 +1,31 @@
+<!-- item_detail.html -->
+{% extends "pawconnect/base.html" %}
+{% load static %}
+
+{% block content %}
+<head>
+	<meta charset="UTF-8">
+	{% load static %}
+	<title>Market Place</title>
+	<link href="{% static 'pawconnect/marketplace.css' %}" rel="stylesheet" type="text/css">
+</head>
+<div id="item-detail-content">
+	<h2>{{ item.title }}</h2>
+	{% if item.image %}
+	<img src="{% url 'item_photo' item.id %}" alt="{{ item.title }}" style="max-width: 300px; max-height: 300px;">
+	{% else %}
+	<img src="{% static 'pawconnect/default-item-image.jpeg' %}" alt="Default item picture"
+		style="max-width: 300px; max-height: 300px;">
+	{% endif %}
+	<p>{{ item.description }}</p>
+	<p>Price: {{ item.price }} 🪙</p>
+	<p>Quantity Available: {{ item.quantity }}</p>
+	<p>Shelf time: {{ item.created_at|date:"F d, Y, P" }}</p>
+	{% if not item.is_sold %}
+	<a href="{% url 'add_to_cart' item.id %}" class="btn btn-primary">Add to Cart</a>
+	{% else %}
+	<p>This item has been sold.</p>
+	{% endif %}
+</div>
+<a href="{% url 'marketplace' %}" class="btn-custom">Return to Marketplace</a>
+{% endblock %}

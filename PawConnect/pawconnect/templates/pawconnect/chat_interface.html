@@ -1,0 +1,55 @@
+{% extends "pawconnect/base.html" %}
+{% load static %}
+{% block extra_css %}
+<link href="{% static 'pawconnect/private_chat.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block info %}
+<div class="navigation">
+	<a href="{% url 'my_profile' %}" id="id_nav_profile">{{user.first_name}} {{user.last_name}}</a>
+</div>
+<div class="navigation">
+	<a href="{% url 'home' %}" id="id_nav_home_page">Home</a>
+	<a href="{% url 'global_stream' %}" id="id_nav_global_stream">Global</a>
+	<a href="{% url 'follower_stream' %}" id="id_nav_follower_stream">Follower</a>
+	<a href="{% url 'my_chats' %}" id="id_nav_my_chats">My Chats</a>
+	<a href="{% url 'marketplace' %}" id="id_nav_my_shopping">My shopping</a>
+	<a href="{% url 'login' %}" id="id_nav_logout">Logout</a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="chat-session pawconnect-chat">
+	<h2>Chat with {{ other_user }}</h2>
+	<!-- Hidden input for chat session ID -->
+	<input type="hidden" id="chat-session-id" value="{{ chat_session.id }}">
+
+	<div class="chat-messages" id="chat-messages">
+		{% if messages %}
+		{% for message in messages %}
+		<div
+			class="message-row {% if message.sender == request.user %}message-sent{% else %}message-received{% endif %}">
+			<div class="message-bubble">
+				<div class="message-content">{{ message.message }}</div>
+			</div>
+			<span class="timestamp">{{ message.timestamp|date:"g:i A" }}</span>
+		</div>
+		{% endfor %}
+		{% else %}
+		<div class="no-messages">Let's chat!</div>
+		{% endif %}
+	</div>
+
+	<form method="post" action="{% url 'send_message' chat_session.id %}">
+		{% csrf_token %}
+		<div class="message-input-container">
+			<input type="text" id="chat-message-input" placeholder="Type a message..." name="message" required>
+			<button id="send-message-button" type="submit">Send</button>
+		</div>
+	</form>
+</div>
+
+
+<script src="{% static 'pawconnect/private_message.js' %}" type="text/javascript"></script>
+
+{% endblock %}

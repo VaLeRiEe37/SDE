@@ -1,0 +1,671 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(180deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    font-size: 18px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#id_header_div {
+    color: white;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#id_site_name {
+    font-size: 44px;
+    color: white;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-align: center;
+    padding: 25px 50px;
+}
+
+.info-block {
+    align-self: flex-end;
+    margin: 5px 0;
+    padding: 5px;
+}
+
+.message {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f8f8f8;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    padding-top: 20px;
+}
+
+#id_page_name {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+table {
+    width: 100%; /* Set table width to 100% to use full container width */
+}
+
+table td,
+table th {
+    text-align: center; /* Center text in table cells and headers */
+}
+
+/* Style for all text within table, which includes labels, input text, placeholders, etc. */
+table, 
+table th, 
+table td, 
+table input, 
+table select, 
+table textarea {
+    font-size: 20px; /* Increase font size for table content, including input fields */
+    text-align: left; /* Center text */
+    font-weight: normal; /* Text is not bold */
+}
+
+/* Additional style for input fields to ensure the height is appropriate for the font size */
+table input, 
+table select, 
+table textarea {
+    height: auto; /* Set the height to auto to adjust to the content */
+    padding: 10px; /* Add some padding inside the input fields */
+}
+
+.navigation {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+.navigation a {
+    color: white;
+    text-decoration: underline;
+    padding: 5px 10px;
+}
+
+.navigation a:hover {
+    text-decoration: underline;
+}
+
+.nav-links {
+    color: white;
+    text-decoration: underline; /* Ensure the link is always underlined */
+    padding: 10px 15px;
+    font-size: 24px; /* Larger font size for better visibility */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.nav-links:hover {
+    text-decoration: none; /* Optionally remove underline on hover for effect */
+    background: darkblue; /* Optional: change on hover */
+}
+
+/**************************/
+/*above is the basic style*/
+/**************************/
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+  }
+  .logo {
+    font-size: 24px;
+  }
+  .menu {
+    display: flex;
+    list-style-type: none;
+  }
+  .menu li {
+    padding: 0 10px;
+  }
+  .menu li a {
+    text-decoration: none;
+    color: #000;
+  }
+  .header {
+    text-align: center;
+    margin: 20px 0;
+  }
+  .feature {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+  }
+  .feature-item {
+    text-align: center;
+    margin: 0 10px; /* Add margin to the left and right */
+  }
+  
+  .feature-item img {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 10px; /* Adds space below the image */
+  }
+  
+  /* text under the icons to have more space */
+  .feature-item p {
+    margin-top: 10px; /* Adds space above the paragraph text */
+  }
+
+  .form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; 
+}
+
+.left-image {
+    flex-shrink: 0; 
+    margin-right: 20px; 
+}
+
+.left-image img {
+    width: 284px;
+    height: 350px;
+    margin-bottom: 10px; 
+}
+
+.chatbot {
+    position: fixed;
+    right: 10px; 
+    bottom: 10px; 
+    width: 40px;
+    height: auto;
+    z-index: 1000;
+}
+
+input[type="text"], textarea {
+    border-radius: 0; /* No rounded corners */
+    padding: 10px;
+}
+
+/**************************/
+/*below is for the login and register view*/
+/**************************/
+#id_login_button {
+    font-size: 20px; /* Set the font size of the button text */
+    padding: 10px 20px; /* Add padding to increase the size of the button */
+    margin-top: 10px; /* Add some space above the button */
+    display: block; /* Make the button a block-level element */
+    margin-left: auto; /* Automatically adjust the left margin */
+    margin-right: auto; /* Automatically adjust the right margin */
+}
+
+#id_register_button {
+    font-size: 20px; /* Set the font size of the button text */
+    padding: 10px 20px; /* Add padding to increase the size of the button */
+    margin-top: 10px; /* Add some space above the button */
+    display: block; /* Make the button a block-level element */
+    margin-left: auto; /* Automatically adjust the left margin */
+    margin-right: auto; /* Automatically adjust the right margin */
+}
+
+#id_register_link {
+    text-decoration: none; /* Removes underline from the Register link */
+    color: purple;
+    margin-right: 15px;
+}
+
+.login-container {
+    display: flex;
+    align-items: center; /* This centers the items vertically */
+    justify-content: center; /* This centers the container horizontally on the page */
+    gap: 80px; /* Adds some space between the image and the form */
+}
+
+/**************************/
+/*below is for the home view*/
+/**************************/
+.top-header {
+    text-align: center;
+}
+
+.logo-image {
+    max-width: 200px; 
+    margin-bottom: 20px; /* Space below logo */
+}
+
+.header-images {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px; /* Space above the navigation */
+}
+
+.top-image {
+    max-width: 100px; 
+    height: auto;
+    margin: 0 10px; /* Space between images */
+}
+
+#top-logo {
+    font-size: 24px;
+    justify-content: center;
+    display: inline-block; /* This makes it center-able by text-align on parent */
+    vertical-align: middle;
+}
+
+.carousel {
+    width: 100%;
+}
+
+.carousel-slides .slide {
+    display: none; /* Hide all slides initially */
+    width: 100%;
+    height: 49vh; /* 0.4 of the viewport height */
+}
+
+.carousel-slides .slide img {
+    width: 100%; /* Scale the image to fill its container's width */
+    height: 100%; /* Scale the image to fill its container's height */
+    object-fit: cover; /* Cover the container without stretching the image */
+}
+
+.carousel-dots {
+    text-align: center;
+    position: absolute;
+    top: 52%;
+    width: 100%;
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.active, .dot:hover {
+    background-color: #717171;
+}
+
+.navigation-home {
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    align-items: flex-end; /* Align children to the start of the flex container (left side) */
+    color: white; /* Set text color to white for all links inside */
+}
+
+.navigation-home a {
+    color: white; /* Set link color to white */
+    font-size: 16px; /* Set a base font size */
+    padding: 4px 0; /* Add some padding for spacing */
+}
+
+#id_nav_logout {
+    font-size: 14px; /* Make the logout link font slightly smaller */
+}
+
+/**************************/
+/*below is for the global stream and follower stream view*/
+/**************************/
+#new_post {
+    background-color: #f8f8f8;
+    padding: 20px;
+    margin: auto;
+    width: 50%;
+    border-radius: 10px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+#new_post label {
+    margin-right: 10px;
+    flex-shrink: 0; /* Prevent the label from shrinking */
+    font-size: 20px;
+}
+#new_post form {
+    width: 50%; /* Form takes full width of the #new_post div */
+}
+#id_post_input_text {
+    flex-grow: 1;
+    margin-right: 10px;
+    font-size: 20px; /* Set the font size of the input text */
+    height: 100px;
+    padding: 6px 12px; /* Adjust the padding to match the button's visual height */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    overflow: auto;
+}
+#id_post_button {
+    font-size: 20px; /* Set the font size of the button text */
+    background-color: rebeccapurple;
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* The hand cursor on hover */
+    flex-shrink: 0;
+    height: 38px;
+    padding: 6px 12px;
+}
+
+#post-content {
+    width: 100%;
+    margin: 0 auto;
+    font-size: 23px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: block;
+}
+
+.post_div {
+    border-bottom: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 15px;
+    display: block;
+    margin-left: auto;  /* Add this line */
+    margin-right: auto; /* Add this line */
+    width: 60%; /* Or any other percentage or fixed width you prefer */
+    background-color: #f8f8f8;
+    border-radius: 10px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.comment_div {
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin-top: 10px;
+    margin-left: 30px;
+    background-color: #f8f8f8;
+    border-radius: 10px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    align-items: center;
+}
+.comment_input{
+    margin-top: 15px;
+    margin-left: 30px;
+    width: 95%;
+    display: flex;
+    align-items: center;
+}
+.comment_input label {
+    margin-right: 10px;
+    flex-shrink: 0;
+    font-size: 20px;
+    align-self: center;
+    font-weight: bold;
+}
+.comment_input_text {
+    flex-grow: 1;
+    font-size: 20px;
+    margin-top: 0px;
+    margin-right: 10px;
+    font-size: 20px;
+    height: 38px;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.comment_button {
+    font-size: 20px;
+    background-color: rebeccapurple;
+    color: white;
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer;
+    flex-shrink: 0;
+    height: 38px;
+    padding: 6px 12px;
+    margin-left: 10px;
+}
+
+.post_profile {
+    font-style: italic;
+}
+.comment_profile {
+    font-style: italic;
+}
+
+.post_date_time {
+    font-style: italic;
+    font-size: 18px;
+    color: darkgray;
+}
+.comment_date_time {
+    font-style: italic;
+    font-size: 18px;
+    color: darkgray;
+}
+
+
+/**************************/
+/*below is for the profile view*/
+/**************************/
+.profile-content {
+    width: 88%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff; /* White background for content */
+    border-radius: 10px; /* Rounded corners for the container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.profile-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* Evenly space the content */
+    align-items: flex-start; /* Align items to the start */
+}
+
+#id_user_picture {
+    width: 280px; /* Set a fixed width for the profile picture */
+    height: 280px; /* Set a fixed height for the profile picture */
+    border-radius: 50%; /* Circular image */
+    object-fit: cover; /* Maintain aspect ratio */
+    margin: 0 auto 20px; /* Center the image horizontally and add margin below */
+    display: block; /* Center the image */
+}
+
+#id_bio {
+    width: 80%; /* Width remains the same */
+    min-height: 100px; /* Minimum height to start with */
+    padding: 12px 20px;
+    margin: 0 auto; 
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: vertical; /* Allow the user to resize vertically */
+}
+
+#id_city {
+    width: 79%;
+    display: block;
+    border-radius: 4px;
+    align-self: center;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+#id_picture {
+    font-size: 20px;
+    display: block; 
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+#id_update_profile_button {
+    font-size: 20px;
+    display: block; /* Center the button */
+    margin: 0 auto; /* Center the button horizontally */
+    margin-top: 10px;
+    background-color: #a707b9; /* Blue background color */
+    color: #fff; /* White text color */
+    border: none; /* Remove border */
+    padding: 10px 20px; /* Add padding */
+    border-radius: 5px; /* Add border radius */
+    cursor: pointer; /* Add cursor pointer */
+    transition: background-color 0.3s ease; /* Smooth hover transition */
+}
+
+#id_update_profile_button:hover {
+    background-color: #0056b3; /* Slightly darker on hover */
+}
+
+#upload_and_follower_div {
+    width: 50%; 
+    margin: 0 auto; /* Center the div horizontally */
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-around; /* Evenly distribute elements */
+    align-items: center; /* Center items vertically */
+}
+
+form {
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack form elements */
+    width: 100%; /* Full width */
+}
+
+form table {
+    width: 100%; /* Table full width */
+    border-collapse: collapse; /* Remove borders between table cells */
+}
+
+form table td {
+    padding: 10px; /* Add padding for better spacing */
+}
+
+form label {
+    font-weight: bold; /* Bold labels */
+    margin-bottom: 5px; /* Add spacing below label */
+}
+
+.profile-info { /* Create a class for profile info */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center text info */
+    margin-bottom: 20px; /* Add spacing below */
+}
+
+.profile-info h2 {
+    font-size: 24px;
+    margin-bottom: 5px; /* Add spacing below heading */
+}
+
+.profile-info p { 
+    font-size: 18px; 
+    line-height: 1.5; /* Adjust line spacing for readability */
+}
+
+.following-list {
+    flex-basis: 100%; /* Take full width */
+    margin-top: 20px; /* Space above the following list */
+}
+
+.following-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+.following-list li {
+    padding: 5px 0; /* Padding for each list item */
+    border-bottom: 1px solid #e9ecef; /* Light line between items */
+}
+.following-list li:last-child {
+    border-bottom: none; /* No border for the last item */
+}
+.following-list a {
+    color: #0056b3;
+    text-decoration: none;
+}
+.following-list a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+.profile-form {
+    flex-basis: 60%; /* Take up 60% of the container */
+    padding: 20px; /* Padding around the form */
+}
+
+textarea, input[type="text"], input[type="file"] {
+    width: 100%; /* Full width */
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ced4da; /* Light grey border */
+}
+
+/**************************/
+/*below is for the other_user profile view*/
+/**************************/
+#profile-content {
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+#id_user_bio {
+    width: 80%;
+    padding: 12px 20px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: vertical;
+}
+#user-posts h3 {
+    color: #333;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #6a11cb;
+}
+#id_unfollow, #id_follow {
+    font-size: 20px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    background-color: #a707b9;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btn-start-chat {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+    margin-top: 25px;
+}
+#id_unfollow:hover, #id_follow:hover, .btn-start-chat:hover {
+    background-color: #555;
+}
+.post {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}

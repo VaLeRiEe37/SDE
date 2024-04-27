@@ -1,0 +1,20 @@
+{% extends "pawconnect/base.html" %}
+{% load static %} 
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'pawconnect/marketplace.css' %}">
+{% endblock %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <h2>Add Unused Pet Supplies</h2>
+    <link href="{% static 'pawconnect/marketplace.css' %}" rel="stylesheet" type="text/css">
+</head>
+<form method="post" enctype="multipart/form-data" class="add-item-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn-custom">Submit</button>
+</form>
+<a href="{% url 'marketplace' %}" class="btn-custom">Return to Marketplace</a>
+{% endblock %}

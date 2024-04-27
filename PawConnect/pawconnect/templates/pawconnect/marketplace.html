@@ -1,0 +1,60 @@
+{% extends "pawconnect/base.html" %}
+{% load static %} 
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'pawconnect/marketplace.css' %}">
+{% endblock %}
+{% block info %}
+    <div class="navigation">
+        <a href="{% url 'profile' %}" id="id_nav_profile">{{user.first_name}} {{user.last_name}}</a>
+    </div>
+    <div class="navigation">
+        <a href="{% url 'home' %}" id="id_nav_home_page">Home</a>
+        <a href="{% url 'global_stream' %}" id="id_nav_global_stream">Global</a>
+        <a href="{% url 'follower_stream' %}" id="id_nav_follower_stream">Follower</a>
+        <a href="{% url 'my_chats' %}" id="id_nav_my_chats">My Chats</a>
+        <a href="{% url 'login' %}" id="id_nav_logout">Logout</a>
+    </div>
+{% endblock %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <title>Market Place</title>
+    <link href="{% static 'pawconnect/marketplace.css' %}" rel="stylesheet" type="text/css">
+</head>
+<div class="container">
+    <div class="sidebar">
+        <h2>My Account</h2>
+        <div class="sidebar-section">
+            <h3>Account Balance: {{ virtual_currency }} 🪙</h3>
+        </div>
+        <div class="sidebar-section">
+            <a href="{% url 'add_item' %}" class="btn-custom">Sell Item</a>
+            <a href="{% url 'my_items' %}" class="btn-custom">My Items</a>
+        </div>
+        <div class="sidebar-section">
+            <a href="{% url 'confirm_purchase' %}" class="btn-custom">My Shopping Cart</a>
+            <a href="{% url 'purchase_history' %}" class="btn-custom">View Purchase History</a>
+        </div>
+    </div>
+    <div class="content">
+        <h2>Available Items</h2>
+        <div class="items-grid">
+            {% for item in items %}
+            <div class="item">
+                <h3>{{ item.title }}</h3>
+                {% if item.image %}
+                    <img src="{% url 'item_photo' item.id %}" alt="{{ item.title }}">
+                {% else %}
+                    <img src="{% static 'pawconnect/default-item-image.jpeg' %}" alt="Default item picture">
+                {% endif %}
+                <p>{{ item.description }}</p>
+                <p>Price: {{ item.price }} 🪙</p>
+                <a href="{% url 'item_detail' item.id %}" class="btn-custom">View Details</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
